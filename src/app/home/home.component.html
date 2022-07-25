@@ -1,27 +1,27 @@
 <div class="home-content">
   <section class="categories">
-    <mat-chip-list aria-label="Dog selection">
-      <mat-chip>
+    <mat-chip-list aria-label="Category selection">
+      <mat-chip value="miscellaneous" (click)="getVal('miscellaneous')">
         <mat-icon color="primary">store</mat-icon>
         Miscellaneous
       </mat-chip>
-      <mat-chip>
+      <mat-chip value="food" (click)="getVal('food')">
         <mat-icon color="primary">restaurant</mat-icon>
         Food
       </mat-chip>
-      <mat-chip>
+      <mat-chip value="accessories" (click)="getVal('accessories')">
         <mat-icon color="primary">airport shuttle</mat-icon>
         Car Accessories
       </mat-chip>
-      <mat-chip>
+      <mat-chip value="electronics" (click)="getVal('electronics')">
         <mat-icon color="primary">devices</mat-icon>
         Electronics
       </mat-chip>
-      <mat-chip>
+      <mat-chip value="toys" (click)="getVal('toys')">
         <mat-icon color="primary">toys</mat-icon>
         Toys
       </mat-chip>
-      <mat-chip>
+      <mat-chip value="phones" (click)="getVal('phones')">
         <mat-icon color="primary">android</mat-icon>
         Phones
       </mat-chip>
@@ -29,9 +29,9 @@
   </section>
   <section class="inner-content">
     <div class="inner-content-header"><h4>Here are today's unbeatable offers!</h4></div>
-    <mat-spinner *ngIf="!$products"></mat-spinner>
+    <mat-spinner *ngIf="!$jumiaProducts | async as data"></mat-spinner>
     <div class="inner-content-content" >
-      <div class="content-cards text-center" *ngFor="let product of $products">
+      <div class="content-cards text-center" *ngFor="let product of $jumiaProducts | async">
         <mat-card class="example-card">
             <img
               mat-card-image

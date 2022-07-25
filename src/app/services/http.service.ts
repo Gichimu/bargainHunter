@@ -6,18 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
-  carrefourUrl = "http://localhost:3000/api/getFromCarrefour?q='"
-  jumiaUrl = "http://localhost:3000/api/getFromJumia?q=flour"
+  
+  carrefourUrl = "http://localhost:3000/api/getFromCarrefour?q="
+  jumiaUrl = "http://localhost:3000/api/getFromJumia?q="
   constructor(private readonly http: HttpClient) { }
 
   getFromCarrefour(query: string): Observable<any> {
-    if(query === ""){
-      query = "''"
-    }
+
     return this.http.get(this.carrefourUrl + query);
   }
 
-  getFromJumia(): Observable<any> {
-    return this.http.get(this.jumiaUrl);
+  getFromJumia(query: string): Observable<any> {
+    return this.http.get(this.jumiaUrl + query);
   }
 }

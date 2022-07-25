@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { defaultIfEmpty, map } from 'rxjs/operators';
 import { HttpService } from '../services/http.service';
 
 @Component({
@@ -10,44 +10,21 @@ import { HttpService } from '../services/http.service';
 })
 export class HomeComponent implements OnInit {
   $products: Array<any>[5];
-
+  $jumiaProducts: Observable<any>;
+  selectedVal: string = 'fish';
+  $carrefourProducts: Observable<any>
   constructor(private readonly httpservice: HttpService) {}
 
   ngOnInit(): void {
-    this.httpservice
-      .getFromJumia()
-      .pipe(map(data) => {
-        return [...data, {img: this.getBase64ImageFromUrl}]
-      })
-      .subscribe((data) => {});
+    this.$jumiaProducts = this.httpservice.getFromJumia(this.selectedVal).pipe(
+      defaultIfEmpty(false)
+    );
   }
 
-  getAll(): void {
-    this.httpservice.getFromCarrefour('').subscribe((data) => {
-      this.$products = data;
+  
 
-      // this.$products.length = 4;
-    });
+  getVal(e){
+  this.selectedVal = e
   }
-
-  async getBase64ImageFromUrl(imageUrl) {
-    var res = await fetch(imageUrl);
-    var blob = await res.blob();
-
-    return new Promise((resolve, reject) => {
-      var reader = new FileReader();
-      reader.addEventListener(
-        'load',
-        function () {
-          resolve(reader.result);
-        },
-        false
-      );
-
-      reader.onerror = () => {
-        return reject(this);
-      };
-      reader.readAsDataURL(blob);
-    });
-  }
+  
 }
