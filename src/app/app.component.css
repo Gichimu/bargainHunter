@@ -1,0 +1,168 @@
+* {
+  color: white;
+}
+
+.container {
+  position: relative;
+  background-size: 75%;
+  bottom: 0;
+  top: 25%;
+  height: 100%;
+  margin-bottom: 0;
+  background: rgb(187, 186, 186);
+  width: 100%;
+}
+
+.content {
+  position: absolute;
+  width: 70vw;
+  top: -7vh;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 2.5em;
+  height: 65vh;
+  overflow: hidden;
+  background: white;
+  padding: 0;
+  /* margin-top: -0.4em; */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footer-toolbar {
+  display: flex;
+  width: 70%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+@media screen and (min-width: 601px) {
+  .content {
+    top: -11vh;
+    margin-top: -0.4em;
+  }
+  .footer-toolbar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    top: -10.5vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 653px) {
+  .content {
+    top: -8.6vh;
+  }
+  .footer-toolbar {
+    width: 100%;
+  }
+}
+
+@media screen and (min-height: 720px) {
+  .content {
+    top: -7.8vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 667px) {
+  .content {
+    top: -8.3vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 740px) {
+  .content {
+    top: -7.6vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 801px) {
+  .content {
+    top: -6.3vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 844px) {
+  .content {
+    top: -6.6vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 851px) {
+  .content {
+    top: -6.5vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 896px) {
+  .content {
+    top: -6.3vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 914px) {
+  .content {
+    top: -6.1vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 1180px) {
+  .content {
+    top: -5.5vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+@media screen and (min-height: 1368px) {
+  .content {
+    top: -4.7vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}

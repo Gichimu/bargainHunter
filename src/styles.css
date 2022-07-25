@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html, body { height: 100%; }
+/* body {  } */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0; font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+
+body {
+    background: url("https://images.pexels.com/photos/589840/pexels-photo-589840.jpeg?cs=srgb&dl=pexels-valiphotos-589840.jpg&fm=jpg") no-repeat;
+    background-size: fit;
+    overflow: hidden;
+}

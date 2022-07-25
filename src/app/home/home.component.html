@@ -1,0 +1,54 @@
+<div class="home-content">
+  <section class="categories">
+    <mat-chip-list aria-label="Dog selection">
+      <mat-chip>
+        <mat-icon color="primary">store</mat-icon>
+        Miscellaneous
+      </mat-chip>
+      <mat-chip>
+        <mat-icon color="primary">restaurant</mat-icon>
+        Food
+      </mat-chip>
+      <mat-chip>
+        <mat-icon color="primary">airport shuttle</mat-icon>
+        Car Accessories
+      </mat-chip>
+      <mat-chip>
+        <mat-icon color="primary">devices</mat-icon>
+        Electronics
+      </mat-chip>
+      <mat-chip>
+        <mat-icon color="primary">toys</mat-icon>
+        Toys
+      </mat-chip>
+      <mat-chip>
+        <mat-icon color="primary">android</mat-icon>
+        Phones
+      </mat-chip>
+    </mat-chip-list>
+  </section>
+  <section class="inner-content">
+    <div class="inner-content-header"><h4>Here are today's unbeatable offers!</h4></div>
+    <mat-spinner *ngIf="!$products"></mat-spinner>
+    <div class="inner-content-content" >
+      <div class="content-cards text-center" *ngFor="let product of $products">
+        <mat-card class="example-card">
+            <img
+              mat-card-image
+              src="{{product.img}}"
+              alt="Product image"
+            />
+            <mat-card-content>
+              <p class="desc">
+                {{ product.description }}
+              </p>
+              <p class="price">Kes. {{product.price}}.00</p>
+              <div class="action-buttons">
+                <button mat-button>View item</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+      </div>
+    </div>
+  </section>
+</div>
