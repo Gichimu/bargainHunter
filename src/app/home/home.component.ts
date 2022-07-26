@@ -16,9 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private readonly httpservice: HttpService) {}
 
   ngOnInit(): void {
-    this.$jumiaProducts = this.httpservice.getFromJumia(this.selectedVal).pipe(
-      defaultIfEmpty(false)
-    );
+    this.$jumiaProducts = this.httpservice.getFromJumia(this.selectedVal);
   }
 
   
