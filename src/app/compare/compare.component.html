@@ -11,11 +11,11 @@
     <div class="inner-content-header">
       <h4>Find unbeatable offers for whatever you need!</h4>
     </div>
-    <mat-spinner *ngIf="!$jumiaProducts | async as data"></mat-spinner>
+    <mat-spinner *ngIf="!products"></mat-spinner>
     <div class="inner-content-content">
       <div
         class="content-cards text-center"
-        *ngFor="let product of $jumiaProducts | async"
+        *ngFor="let product of products"
       >
         <mat-card class="example-card">
           <img mat-card-image src="{{ product.img }}" alt="Product image" />

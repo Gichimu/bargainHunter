@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { defaultIfEmpty, map } from 'rxjs/operators';
 import { HttpService } from '../services/http.service';
 
@@ -12,9 +12,10 @@ import { HttpService } from '../services/http.service';
 })
 export class CompareComponent implements OnInit {
 
-  $products: Array<any>[5];
-  $jumiaProducts: Observable<any>;
-  selectedVal: string = ' ';
+  
+  $jumiaProducts: Observable<any>
+  products = [];
+  selectedVal: string = 'fridges';
   $carrefourProducts: Observable<any>
 
   searchFormGroup: FormGroup;
@@ -22,20 +23,26 @@ export class CompareComponent implements OnInit {
   constructor(private readonly httpservice: HttpService, private _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.products.length = 0;
     this.searchFormGroup = this._formBuilder.group({
       search: '',
     });
-    this.$jumiaProducts = this.httpservice.getFromJumia(this.selectedVal).pipe(
-      defaultIfEmpty(false)
-    );
+    this.httpservice.getFromJumia(this.selectedVal).subscribe(data => {
+      this.products = data
+    });
   }
 
   getKeyword(){
-    this.$jumiaProducts = this.httpservice.getFromJumia(this.searchFormGroup.value.search)
+    this.httpservice.getFromJumia(this.searchFormGroup.value.search).subscribe(data => {
+      this.products = data
+    });
   }
 
-  comparePrices(keyword: string){
-    this.$jumiaProducts = this.httpservice.getFromJumia(keyword)
-  }
+  // comparePrices(keyword: string){
+  //   this.httpservice.getFromJumia(keyword).subscribe(data => {
+  //     // this.products.push(data[0])
+  //     this.ngOnInit()
+  //   })
+  // }
 
 }
