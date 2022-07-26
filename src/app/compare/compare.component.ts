@@ -4,15 +4,17 @@ import { Observable } from 'rxjs';
 import { defaultIfEmpty, map } from 'rxjs/operators';
 import { HttpService } from '../services/http.service';
 
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-compare',
+  templateUrl: './compare.component.html',
+  styleUrls: ['./compare.component.css']
 })
-export class HomeComponent implements OnInit {
+export class CompareComponent implements OnInit {
+
   $products: Array<any>[5];
   $jumiaProducts: Observable<any>;
-  selectedVal: string = 'fish';
+  selectedVal: string = ' ';
   $carrefourProducts: Observable<any>
 
   searchFormGroup: FormGroup;
@@ -32,8 +34,8 @@ export class HomeComponent implements OnInit {
     this.$jumiaProducts = this.httpservice.getFromJumia(this.searchFormGroup.value.search)
   }
 
-  getVal(e){
-  this.selectedVal = e;
+  comparePrices(keyword: string){
+    this.$jumiaProducts = this.httpservice.getFromJumia(keyword)
   }
-  
+
 }

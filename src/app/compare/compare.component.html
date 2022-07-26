@@ -1,0 +1,35 @@
+<div class="home-content">
+  <section class="search">
+    <form (keyup)="getKeyword()" [formGroup]="searchFormGroup">
+      <mat-form-field class="search-input" appearance="outline">
+        <input matInput formControlName="search" placeholder="Search" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+  </section>
+  <section class="inner-content">
+    <div class="inner-content-header">
+      <h4>Find unbeatable offers for whatever you need!</h4>
+    </div>
+    <mat-spinner *ngIf="!$jumiaProducts | async as data"></mat-spinner>
+    <div class="inner-content-content">
+      <div
+        class="content-cards text-center"
+        *ngFor="let product of $jumiaProducts | async"
+      >
+        <mat-card class="example-card">
+          <img mat-card-image src="{{ product.img }}" alt="Product image" />
+          <mat-card-content>
+            <p class="desc">
+              {{ product.description }}
+            </p>
+            <p class="price">Kes. {{ product.price }}.00</p>
+            <div class="action-buttons">
+              <button mat-button (click)="comparePrices(product.description)">Compare prices</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+</div>

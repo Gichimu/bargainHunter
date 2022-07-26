@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CompareComponent } from './compare/compare.component';
 import { HomeComponent } from './home/home.component';
-import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'search', component: SearchComponent},
+  {path: 'compare', component: CompareComponent}
 ];
 
 @NgModule({
