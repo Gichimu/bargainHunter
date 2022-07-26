@@ -1,34 +1,17 @@
 <div class="home-content">
-  <section class="categories">
-    <mat-chip-list aria-label="Category selection">
-      <mat-chip value="miscellaneous" (click)="getVal('miscellaneous')">
-        <mat-icon color="primary">store</mat-icon>
-        Miscellaneous
-      </mat-chip>
-      <mat-chip value="food" (click)="getVal('food')">
-        <mat-icon color="primary">restaurant</mat-icon>
-        Food
-      </mat-chip>
-      <mat-chip value="accessories" (click)="getVal('accessories')">
-        <mat-icon color="primary">airport shuttle</mat-icon>
-        Car Accessories
-      </mat-chip>
-      <mat-chip value="electronics" (click)="getVal('electronics')">
-        <mat-icon color="primary">devices</mat-icon>
-        Electronics
-      </mat-chip>
-      <mat-chip value="toys" (click)="getVal('toys')">
-        <mat-icon color="primary">toys</mat-icon>
-        Toys
-      </mat-chip>
-      <mat-chip value="phones" (click)="getVal('phones')">
-        <mat-icon color="primary">android</mat-icon>
-        Phones
-      </mat-chip>
-    </mat-chip-list>
+  <section class="search">
+    <form (keyup)="getKeyword()" [formGroup]="searchFormGroup">
+      <mat-form-field
+        class="search-input"
+        appearance="outline"
+      >
+        <input matInput formControlName="search" placeholder="Search" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
   </section>
   <section class="inner-content">
-    <div class="inner-content-header"><h4>Here are today's unbeatable offers!</h4></div>
+    <div class="inner-content-header"><h4>Find unbeatable offers for whatever you need!</h4></div>
     <mat-spinner *ngIf="!$jumiaProducts | async as data"></mat-spinner>
     <div class="inner-content-content" >
       <div class="content-cards text-center" *ngFor="let product of $jumiaProducts | async">
