@@ -20,7 +20,7 @@
   left: 50%;
   transform: translate(-50%);
   border-radius: 2.5em;
-  height: 65vh;
+  height: 75vh; /* originally 65vh */
   overflow: hidden;
   background: white;
   padding: 0;

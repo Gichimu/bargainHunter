@@ -9,13 +9,14 @@
   </section>
   <section class="inner-content">
     <div class="inner-content-header">
-      <h4>Find unbeatable offers for whatever you need!</h4>
+      <h4>Find unbeatable offers for anything you need!</h4>
     </div>
-    <mat-spinner *ngIf="!products"></mat-spinner>
+
+    <mat-spinner *ngIf="!products$ | async"></mat-spinner>
     <div class="inner-content-content">
       <div
         class="content-cards text-center"
-        *ngFor="let product of products"
+        *ngFor="let product of products$ | async"
       >
         <mat-card class="example-card">
           <img mat-card-image src="{{ product.img }}" alt="Product image" />
@@ -25,7 +26,9 @@
             </p>
             <p class="price">Kes. {{ product.price }}.00</p>
             <div class="action-buttons">
-              <button mat-button (click)="comparePrices(product.description)">Compare prices</button>
+              <button mat-button (click)="comparePrices(product.description)">
+                Compare prices
+              </button>
             </div>
           </mat-card-content>
         </mat-card>

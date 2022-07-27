@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharingService } from './services/sharing.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,10 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'bargainHunter';
 
-  constructor(private router: Router) {}
+  constructor(private sharingservice: SharingService) {}
 
-  redirectTo(uri: string) {
-    this.router
-      .navigateByUrl('/', { skipLocationChange: true })
-      .then(() => this.router.navigate([uri]));
+  sendMessage(){
+    this.sharingservice.sendUpdate('reload')
   }
 
-  goTo(location: string){
-    this.redirectTo(location);
-  }
 }
