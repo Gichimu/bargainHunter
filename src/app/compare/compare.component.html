@@ -14,25 +14,70 @@
 
     <mat-spinner *ngIf="!products$ | async"></mat-spinner>
     <div class="inner-content-content">
-      <div
-        class="content-cards text-center"
-        *ngFor="let product of products$ | async"
-      >
-        <mat-card class="example-card">
-          <img mat-card-image src="{{ product.img }}" alt="Product image" />
-          <mat-card-content>
-            <p class="desc">
-              {{ product.description }}
-            </p>
-            <p class="price">Kes. {{ product.price }}.00</p>
-            <div class="action-buttons">
-              <button mat-button (click)="comparePrices(product.description)">
-                Compare prices
-              </button>
-            </div>
-          </mat-card-content>
-        </mat-card>
+      <div class="inner-content-content" *ngIf="comparison; else elseBlock">
+        <!-- jumia -->
+        <div
+          class="content-cards text-center"
+          *ngFor="let product of products$ | async | slice :0:1"
+        >
+          <mat-card class="example-card">
+            <img mat-card-image src="{{ product.img }}" alt="Product image" />
+            <mat-card-content>
+              <p class="desc">
+                {{ product.description }}
+              </p>
+              <p class="price">Kes. {{ product.price }}.00</p>
+              <div class="action-buttons">
+                <button mat-button>
+                  Get from Jumia
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <!-- carrefour -->
+        <div
+          class="content-cards text-center"
+          *ngFor="let product of carrefourProducts$ | async"
+        >
+          <mat-card class="example-card">
+            <img mat-card-image src="{{ product.img }}" alt="Product image" />
+            <mat-card-content>
+              <p class="desc">
+                {{ product.description }}
+              </p>
+              <p class="price">Kes. {{ product.price }}.00</p>
+              <div class="action-buttons">
+                <button mat-button>
+                  Get from CarreFour
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
+      <ng-template #elseBlock>
+        <div
+          class="content-cards text-center"
+          *ngFor="let product of products$ | async"
+        >
+          <mat-card class="example-card">
+            <img mat-card-image src="{{ product.img }}" alt="Product image" />
+            <mat-card-content>
+              <p class="desc">
+                {{ product.description }}
+              </p>
+              <p class="price">Kes. {{ product.price }}.00</p>
+              <div class="action-buttons">
+                <button mat-button (click)="comparePrices(product.description)">
+                  Compare prices
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-template>
     </div>
   </section>
 </div>
