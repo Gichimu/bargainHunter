@@ -28,7 +28,7 @@
               </p>
               <p class="price">Kes. {{ product.price }}.00</p>
               <div class="action-buttons">
-                <button mat-button>
+                <button mat-button (click)="goTo(product.link)">
                   Get from Jumia
                 </button>
               </div>
@@ -49,7 +49,7 @@
               </p>
               <p class="price">Kes. {{ product.price }}.00</p>
               <div class="action-buttons">
-                <button mat-button>
+                <button mat-button (click)="goTo(product.link)">
                   Get from CarreFour
                 </button>
               </div>

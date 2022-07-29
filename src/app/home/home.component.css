@@ -9,7 +9,6 @@
 }
 
 .inner-content {
-  margin: 1em;
   color: rgba(71, 69, 69, 0.808);
   display: flex;
   flex-direction: column;
@@ -17,7 +16,7 @@
 
 .inner-content-header {
   text-align: center;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .inner-content-header h4 {
@@ -37,13 +36,12 @@
 }
 
 .content-cards {
-  max-width: 300px;
+  /* max-width: 300px; */
 }
 
 .inner-content-content p {
   font-size: 0.9em;
 }
-
 
 p.price {
   font-weight: bold;
@@ -51,7 +49,7 @@ p.price {
 
 .example-card {
   margin: 1em;
-  max-width: 70%;
+  max-width: 300px;
 }
 
 .action-buttons {
@@ -70,7 +68,7 @@ p.price {
   border-radius: 0 30px 30px 0 !important;
 }
 .search-input {
-  margin-bottom: 0;
+  margin: 0;
 }
 /* search bar size */
 .search {
