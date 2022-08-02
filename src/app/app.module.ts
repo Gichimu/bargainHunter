@@ -8,13 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from './app-material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CompareComponent } from './compare/compare.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CompareComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,9 +4,9 @@
 
 .container {
   position: relative;
-  background-size: 75%;
+  background-size: 85%;
   bottom: 0;
-  top: 25%;
+  top: 15%;
   height: 100%;
   margin-bottom: 0;
   background: rgb(187, 186, 186);
@@ -20,7 +20,7 @@
   left: 50%;
   transform: translate(-50%);
   border-radius: 2.5em;
-  height: 75vh; /* originally 65vh */
+  height: 85vh; /* originally 65vh */
   overflow: hidden;
   background: white;
   padding: 0;
@@ -77,14 +77,29 @@
   }
 }
 
-@media screen and (min-height: 720px) {
+@media screen and (min-height: 600px) {
   .content {
-    top: -7.8vh;
+    top: -9.7vh;
   }
   .footer-toolbar {
     width: 90%;
   }
 }
+
+@media screen and (min-height: 653px) {
+  .header-toolbar {
+    width: 70vw;
+    padding-left: 1em;
+    font-size: .9em;
+  }
+  .content {
+    top: -8.5vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
 
 @media screen and (min-height: 667px) {
   .content {
@@ -95,6 +110,16 @@
   }
 }
 
+@media screen and (min-height: 720px) {
+  .content {
+    top: -7.8vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+
 @media screen and (min-height: 740px) {
   .content {
     top: -7.6vh;
@@ -104,9 +129,9 @@
   }
 }
 
-@media screen and (min-height: 801px) {
+@media screen and (min-height: 800px) {
   .content {
-    top: -6.3vh;
+    top: -7.25vh;
   }
   .footer-toolbar {
     width: 90%;
@@ -149,18 +174,28 @@
   }
 }
 
-@media screen and (min-height: 1180px) {
+@media screen and (min-height: 1024px) {
   .content {
-    top: -5.5vh;
+    top: -5.7vh;
   }
   .footer-toolbar {
     width: 90%;
   }
 }
 
+@media screen and (min-height: 1180px) {
+  .content {
+    top: -4.9vh;
+  }
+  .footer-toolbar {
+    width: 90%;
+  }
+}
+
+
 @media screen and (min-height: 1368px) {
   .content {
-    top: -4.7vh;
+    top: -4.3vh;
   }
   .footer-toolbar {
     width: 90%;

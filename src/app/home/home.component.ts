@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { defaultIfEmpty, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { defaultIfEmpty, map, filter, finalize } from 'rxjs/operators';
 import { HttpService } from '../services/http.service';
 import { SharingService } from '../services/sharing.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   resultProducts$: Observable<any>;
   selectedVal: string = ' ';
   $carrefourProducts: Observable<any>;
+  loading$ = new BehaviorSubject<boolean>(true);
 
   searchFormGroup: FormGroup;
 
@@ -28,7 +30,8 @@ export class HomeComponent implements OnInit {
     private readonly httpservice: HttpService,
     private readonly router: Router,
     private readonly sharingservice: SharingService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -51,47 +54,50 @@ export class HomeComponent implements OnInit {
   }
 
   comparePrices(keyword: string) {
+    this.comparison = true;
     this.jumiaProducts.length = 0;
-    // keyword.split(' ').forEach((word) => {
-    //   this.httpservice.getFromJumia(word).subscribe((data) => {
-    //     this.jumiaProducts.push(data[0]);
-    //   });
-    // });
-    // let matchString = keyword.replace(/ /g, '|').slice(0, 30)
-    let matchString = keyword.split(' ').splice(0, 5);
-    // let splitString = matchString.slice(0, 5)
-    // let matchString = splitString.replace(/""/g, '/|/');
-    // let nothingFromCarrefour = this.httpservice.getFromCarrefour(matchString[0] + " " + matchString[1] + " " + matchString[2]).pipe(defaultIfEmpty(false))
+    let matchString = keyword.split(' ').splice(0, 7);
+    let newMatchString = [...new Set(matchString)];
+    let specs = keyword.match(/[0-9]/)
+    
 
     this.carrefourProducts$ = this.httpservice
-      .getFromCarrefour(matchString[0] + " " + matchString[1] + " " + matchString[2])
-      // .pipe(map((data) => data.filter((item) => item.description == matchString[0])));
+      .getFromCarrefour(newMatchString[0] + ' ' + newMatchString[1])
+      .pipe(finalize(() => this.loading$.next(false)))
+     
 
-    // if(nothingFromCarrefour){
-    //   this.carrefourProducts$ = this.httpservice.getFromCarrefour(keyword)
-    // }
-    let nothingFromJumia = this.httpservice.getFromJumia(keyword).pipe(defaultIfEmpty(false))
+    let nothingFromJumia = this.httpservice
+      .getFromJumia(keyword)
+      .pipe(defaultIfEmpty(false));
+
     this.products$ = this.httpservice
       .getFromJumia(keyword)
-      .pipe(map((data) => data.filter((item) => item.description == keyword)));
+      .pipe(
+        map((products) =>
+          products.filter((item) => item.description === matchString)
+        )
+      );
 
-    if(nothingFromJumia){
+    if (nothingFromJumia) {
       this.products$ = this.httpservice
-      .getFromJumia(matchString[0] + " " + matchString[1] + " " + matchString[2])
-      // .pipe(map((data) => data.filter((item) => item.description == keyword)));
+        .getFromJumia(
+          matchString[0] + ' ' + matchString[1] + ' ' + matchString[2]
+        )
+        .pipe(
+          map((products) =>
+            products.filter((item) => item.description == keyword)
+          )
+        );
     }
-    // .subscribe(data => {
-    // //   // let filtered = data.filter(item => item.description === keyword)
-    //     console.log(data)
-    // })
-
-    console.log(keyword);
-    // console.log(this.jumiaProducts);
-    this.comparison = true;
+    
   }
 
   goTo(link: string) {
-    window.location.href = link;
+    window.open(link, "_blank")
+  }
+
+  goBack() {
+    window.history.back()
   }
 
   ngOnDestroy(): void {

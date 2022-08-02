@@ -16,3 +16,7 @@ body {
     background-size: fit;
     overflow: hidden;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}

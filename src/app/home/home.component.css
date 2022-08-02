@@ -6,6 +6,7 @@
   color: black;
   margin: 1% 2%;
   width: 100%;
+  padding: 0 2.5em 0 2em;
 }
 
 .inner-content {
@@ -31,13 +32,10 @@
   align-items: center;
   flex-wrap: wrap;
   overflow: auto;
-  height: 500px;
+  height: 600px;
   overflow-y: auto;
 }
 
-.content-cards {
-  /* max-width: 300px; */
-}
 
 .inner-content-content p {
   font-size: 0.9em;
@@ -50,6 +48,16 @@ p.price {
 .example-card {
   margin: 1em;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-image {
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  text-align: center;
 }
 
 .action-buttons {
@@ -67,10 +75,106 @@ p.price {
 ::ng-deep .mat-form-field-outline-end {
   border-radius: 0 30px 30px 0 !important;
 }
+
 .search-input {
-  margin: 0;
+  margin: 0;  
 }
 /* search bar size */
 .search {
   font-size: 0.9em;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.back-button {
+  position: absolute;
+  left: 5em;
+}
+
+
+@media screen and (min-height: 600px) {
+  .inner-content-content {
+    height: 300px;
+  }
+
+  .example-card {
+    max-width: 200px;
+  }
+
+  .card-image {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+  }
+}
+
+/* @media screen and (min-height: 653px) {
+  .search-input {
+    width: 40vw;
+  }
+} */
+
+@media screen and (min-height: 667px) {
+  .inner-content-content {
+    height: 335px;
+  }
+}
+
+@media screen and (min-height: 720px) {
+  .inner-content-content {
+    height: 395px;
+  }
+}
+
+@media screen and (min-height: 740px) {
+  .inner-content-content {
+    height: 400px;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .inner-content-content {
+    height: 500px;
+  }
+
+  .example-card {
+    max-width: 250px;
+  }
+
+  .card-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+}
+
+@media screen and (min-height: 844px) {
+  .inner-content-content {
+    height: 500px;
+  }
+}
+
+@media screen and (min-height: 896px) {
+  .inner-content-content {
+    height: 540px;
+  }
+}
+
+@media screen and (min-height: 1024px) {
+  .inner-content-content {
+    height: 635px;
+  }
+}
+
+@media screen and (min-height: 1180px) {
+  .inner-content-content {
+    height: 767px;
+  }
+}
+
+@media screen and (min-height: 1368px) {
+  .inner-content-content {
+    height: 927px;
+  }
 }
